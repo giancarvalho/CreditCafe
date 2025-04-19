@@ -20,8 +20,8 @@ const ExportData: React.FC<ExportDataProps> = ({ customers }) => {
         <FileSpreadsheet size={48} className="mx-auto mb-4 text-amber-600" />
         
         <p className="text-gray-700 mb-4">
-          Export all customer data to a spreadsheet file. 
-          This will include all customer information and their transaction histories.
+          Exporte todos os dados dos clientes para uma planilha. 
+          Isso incluirá todas as informações dos clientes e seus históricos de transações.
         </p>
         
         <p className="text-sm text-gray-600 mb-4">
@@ -38,16 +38,16 @@ const ExportData: React.FC<ExportDataProps> = ({ customers }) => {
           }`}
         >
           <Download size={18} className="mr-2" />
-          Export to Excel
+          Exportar para Excel
         </button>
       </div>
       
       <div className="text-sm text-gray-700">
         <h3 className="font-medium mb-2">Export Information:</h3>
         <ul className="list-disc list-inside space-y-1">
-          <li>The exported file will be in Excel format (.xlsx)</li>
-          <li>All customer data including transaction history will be exported</li>
-          <li>You can re-import this file later if needed</li>
+          <li>O arquivo de exportação estará em formato do Excel (.xlsx)</li>
+            <li>Todos os dados dos clientes, incluindo o histórico de transações, serão exportados</li>
+            <li>Você pode reimportar este arquivo posteriormente, se necessário</li>
         </ul>
       </div>
     </div>

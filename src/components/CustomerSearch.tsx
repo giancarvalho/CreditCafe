@@ -39,7 +39,7 @@ const CustomerSearch: React.FC<CustomerSearchProps> = ({ customers, onResultsCha
         />
         <input
           type="text"
-          placeholder="Search by name or phone number..."
+          placeholder="Procure por nome ou telefone..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
