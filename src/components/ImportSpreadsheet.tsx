@@ -49,7 +49,7 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
     ];
     
     if (!validTypes.includes(file.type)) {
-      setError('Please upload a valid Excel or CSV file.');
+      setError('Por favor, importe um planilha válida');
       setFile(null);
       return;
     }
@@ -71,7 +71,7 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
       setSuccessMessage(`Successfully imported ${importedCustomers.length} customers.`);
       setFile(null);
     } catch (err) {
-      setError('Error importing spreadsheet. Please check the file format.');
+      setError('Erro ao importar a planilha. Verifique se a planilha é valida.');
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -142,15 +142,15 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
             : 'bg-amber-700 hover:bg-amber-800 transition-colors'
         }`}
       >
-        {isLoading ? 'Importing...' : 'Import Data'}
+        {isLoading ? 'Importando...' : 'Importar'}
       </button>
       
       <div className="mt-4 text-sm text-gray-600">
         <p className="font-medium mb-1">Expected spreadsheet format:</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Columns: name, phoneNumber, balance</li>
-          <li>Optional columns: transactions (JSON string)</li>
-          <li>One customer per row</li>
+            <li>Colunas: nome, telefone, saldo</li>
+            <li>Colunas opcionais: transações (string JSON)</li>
+            <li>Um cliente por linha</li>
         </ul>
       </div>
     </div>

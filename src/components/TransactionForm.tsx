@@ -23,10 +23,10 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
     
     // Validate amount
     if (!amount) {
-      setAmountError('Amount is required');
+      setAmountError('O valor é obrigatório');
       isValid = false;
     } else if (isNaN(Number(amount)) || Number(amount) <= 0) {
-      setAmountError('Please enter a valid positive number');
+      setAmountError('Por favor, entre um valor positivo');
       isValid = false;
     } else {
       setAmountError('');
