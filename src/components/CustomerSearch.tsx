@@ -10,7 +10,6 @@ interface CustomerSearchProps {
 const CustomerSearch: React.FC<CustomerSearchProps> = ({ customers, onResultsChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
-  // Filter customers when search term changes
   useEffect(() => {
     if (!searchTerm.trim()) {
       onResultsChange(customers);
@@ -24,7 +23,7 @@ const CustomerSearch: React.FC<CustomerSearchProps> = ({ customers, onResultsCha
     );
     
     onResultsChange(filtered);
-  }, [searchTerm, customers, onResultsChange]);
+  }, [searchTerm, JSON.stringify(customers)]);
 
   const clearSearch = () => {
     setSearchTerm('');
