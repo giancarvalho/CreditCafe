@@ -94,7 +94,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
               className={`w-full p-2 border border-gray-300 rounded-md focus:ring-2 ${
                 type === 'add' ? 'focus:ring-blue-500 focus:border-blue-500' : 'focus:ring-amber-500 focus:border-amber-500'
               } transition-all`}
-              placeholder={type === 'add' ? "e.g., Deposit" : "e.g., Purchase"}
+              placeholder={type === 'add' ? "e.g., Depósito" : "e.g., Marmita"}
             />
           </div>
           
@@ -114,7 +114,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                   : 'bg-amber-600 hover:bg-amber-700'
               }`}
             >
-              {type === 'add' ? 'Add Credit' : 'Subtract Credit'}
+              {type === 'add' ? 'Adicionar Crédito' : 'Subtrair Crédito'}
             </button>
           </div>
         </form>

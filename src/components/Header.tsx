@@ -8,9 +8,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onNavClick, currentView }) => {
   const navItems = [
-    { id: 'customers', label: 'Customers' },
-    { id: 'import', label: 'Import Data' },
-    { id: 'export', label: 'Export Data' }
+    { id: 'customers', label: 'Clientes' },
+    { id: 'import', label: 'Importar' },
+    { id: 'export', label: 'Exportar' }
   ];
 
   return (

@@ -63,7 +63,7 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
       <div className="p-6 border-b border-gray-200">
         <div className="flex justify-between items-center mb-4">
           <div>
-            <p className="text-sm text-gray-500">Current Balance</p>
+            <p className="text-sm text-gray-500">Saldo atual</p>
             <p className={`text-2xl font-bold ${
               customer.balance >= 0 ? 'text-green-600' : 'text-red-600'
             }`}>
@@ -102,10 +102,10 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
       
       {/* Transactions */}
       <div className="p-4">
-        <h3 className="text-lg font-medium text-gray-800 mb-4">Transaction History</h3>
+        <h3 className="text-lg font-medium text-gray-800 mb-4">Histórico de Transações</h3>
         
         {recentTransactions.length === 0 ? (
-          <p className="text-gray-500 text-center py-4">No transactions yet.</p>
+          <p className="text-gray-500 text-center py-4">Vazio aqui, né?</p>
         ) : (
           <div className="overflow-hidden bg-white border border-gray-200 rounded-md">
             <table className="min-w-full divide-y divide-gray-200">
@@ -115,10 +115,10 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
                     Date
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Description
+                    Descrição
                   </th>
                   <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Amount
+                    Valor
                   </th>
                 </tr>
               </thead>
@@ -129,7 +129,7 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
                       {formatDate(transaction.date)}
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-900">
-                      {transaction.description || 'No description'}
+                      {transaction.description || 'Sem descrição'}
                     </td>
                     <td className={`px-4 py-3 text-sm font-medium text-right ${
                       transaction.type === 'add' ? 'text-green-600' : 'text-red-600'
