@@ -9,7 +9,8 @@ interface CustomerContextType {
   addCustomer: (customer: Omit<Customer, 'id' | 'createdAt' | 'updatedAt'>) => void;
   updateCustomer: (customer: Customer) => void;
   deleteCustomer: (id: string) => void;
-  addTransaction: (customerId: string, transaction: Omit<Transaction, 'id' | 'date'>) => void;
+  addTransaction: (customerId: string, transaction: Omit<Transaction, 'id' | 'date'>) => Customer;
+  getCustomerById: (costumerId: string) => Customer;
 }
 
 const CustomerContext = createContext<CustomerContextType | undefined>(undefined);
@@ -64,11 +65,16 @@ export const CustomerProvider: React.FC<CustomerProviderProps> = ({ children }) 
     setCustomers(prev => prev.filter(customer => customer.id !== id));
   };
 
+  const getCustomerById = (id: string) => {
+    return customers.find(costumer => costumer.id === id)
+  }
+
   // Add a transaction to a customer
   const addTransaction = (
     customerId: string, 
     transaction: Omit<Transaction, 'id' | 'date'>
   ) => {
+    let customerReturn;
     setCustomers(prev => {
       return prev.map(customer => {
         if (customer.id === customerId) {
@@ -83,16 +89,20 @@ export const CustomerProvider: React.FC<CustomerProviderProps> = ({ children }) 
             ? transaction.amount 
             : -transaction.amount;
           
-          return {
+          const updatedCustomer = {
             ...customer,
             balance: customer.balance + balanceChange,
             transactions: [...customer.transactions, newTransaction],
             updatedAt: new Date().toISOString()
           };
+
+          customerReturn = updatedCustomer;
+          return updatedCustomer;
         }
         return customer;
       });
     });
+    return customerReturn;
   };
 
   const value = {
@@ -102,7 +112,8 @@ export const CustomerProvider: React.FC<CustomerProviderProps> = ({ children }) 
     addCustomer,
     updateCustomer,
     deleteCustomer,
-    addTransaction
+    addTransaction,
+    getCustomerById
   };
 
   return (

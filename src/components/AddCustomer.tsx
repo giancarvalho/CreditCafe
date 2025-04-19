@@ -85,7 +85,7 @@ const AddCustomer: React.FC<AddCustomerProps> = ({ onAdd, onCancel }) => {
               className={`w-full p-2 border rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all ${
                 phoneError ? 'border-red-500' : 'border-gray-300'
               }`}
-              placeholder="ex.: +1234567890"
+              placeholder="Ex.: 34999887766"
             />
             {phoneError && <p className="mt-1 text-sm text-red-600">{phoneError}</p>}
           </div>

@@ -37,10 +37,10 @@ export const createWhatsAppShareUrl = (customer: {
     .slice(0, 5);
   
   // Format the message
-  let message = `Hello ${customer.name}, your current balance is ${formatCurrency(customer.balance)}.\n\n`;
+  let message = `Olá ${customer.name}, seu saldo é ${formatCurrency(customer.balance)}.\n\n`;
   
   if (recentTransactions.length > 0) {
-    message += "Recent transactions:\n";
+    message += "Transações recentes:\n";
     recentTransactions.forEach((transaction, index) => {
       const formattedDate = formatDate(transaction.date);
       const prefix = transaction.type === 'add' ? '+' : '-';
@@ -54,5 +54,5 @@ export const createWhatsAppShareUrl = (customer: {
   // Format phone number by removing non-numeric characters
   const formattedPhone = customer.phoneNumber.replace(/\D/g, '');
   
-  return `https://wa.me/${formattedPhone}?text=${encodedMessage}`;
+  return `https://wa.me/+55${formattedPhone}?text=${encodedMessage}`;
 };

@@ -18,7 +18,7 @@ function MainApp() {
     setCustomers,
     addCustomer, 
     deleteCustomer,
-    addTransaction
+    addTransaction,
   } = useCustomers();
   
   const [currentView, setCurrentView] = useState('clientes');
@@ -72,10 +72,13 @@ function MainApp() {
     customerId: string, 
     transaction: { amount: number; description: string; type: 'add' | 'subtract' }
   ) => {
-    addTransaction(customerId, transaction);
+    const updatedCustomer = addTransaction(customerId, transaction);
     toast.success(
       `${transaction.type === 'add' ? 'Adicionado' : 'Subtraído'} crédito: R$${transaction.amount.toFixed(2)}`
     );
+    console.log(updatedCustomer);
+
+    handleSelectCustomer(updatedCustomer);
   };
 
   // Renderizar diferentes visualizações com base no estado atual
