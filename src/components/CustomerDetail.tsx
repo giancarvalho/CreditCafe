@@ -87,7 +87,7 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
             className="flex-1 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
           >
             <Plus size={16} className="mr-1" />
-            Add Credit
+            Adicionar Crédito
           </button>
           
           <button
@@ -95,7 +95,7 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
             className="flex-1 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors flex items-center justify-center"
           >
             <Minus size={16} className="mr-1" />
-            Subtract Credit
+            Subtrair Crédito
           </button>
         </div>
       </div>
@@ -153,23 +153,23 @@ const CustomerDetail: React.FC<CustomerDetailProps> = ({
             className="px-4 py-2 text-red-600 border border-red-300 rounded-md hover:bg-red-50 transition-colors flex items-center"
           >
             <Trash2 size={16} className="mr-2" />
-            Delete Customer
+            Apagar cliente
           </button>
         ) : (
           <div className="bg-red-50 p-3 rounded-md">
-            <p className="text-red-700 mb-2">Are you sure you want to delete this customer?</p>
+            <p className="text-red-700 mb-2">Tem certeza que quer apagar esse cliente?</p>
             <div className="flex space-x-2">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
               >
-                Cancel
+                Cancelar
               </button>
               <button
                 onClick={handleDeleteCustomer}
                 className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
               >
-                Delete
+                Apagar
               </button>
             </div>
           </div>
