@@ -30,13 +30,13 @@ const CustomerList: React.FC<CustomerListProps> = ({
           className="bg-amber-700 hover:bg-amber-800 text-white px-3 py-1 rounded-md text-sm flex items-center transition-colors"
         >
           <Plus size={16} className="mr-1" />
-          New Customer
+          Novo cliente
         </button>
       </div>
       
       {customers.length === 0 ? (
         <div className="p-6 text-center text-gray-500">
-          <p>No customers found. Import data or add a new customer.</p>
+          <p>Nenhum cliente ainda. Importe uma planilha ou adicione clientes.</p>
         </div>
       ) : (
         <ul className="divide-y divide-gray-200">
@@ -53,7 +53,7 @@ const CustomerList: React.FC<CustomerListProps> = ({
                   </p>
                   <div className="flex items-center mt-1 text-xs text-gray-500">
                     <Phone size={12} className="mr-1" />
-                    <span>{customer.phoneNumber || 'No phone number'}</span>
+                    <span>{customer.phoneNumber || 'Sem número de telefone'}</span>
                   </div>
                 </div>
                 <div className="flex items-center">
