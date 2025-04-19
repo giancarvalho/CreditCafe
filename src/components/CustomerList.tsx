@@ -24,7 +24,7 @@ const CustomerList: React.FC<CustomerListProps> = ({
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-gray-800">Customers</h2>
+        <h2 className="text-lg font-semibold text-gray-800">Clientes</h2>
         <button
           onClick={onAddCustomer}
           className="bg-amber-700 hover:bg-amber-800 text-white px-3 py-1 rounded-md text-sm flex items-center transition-colors"

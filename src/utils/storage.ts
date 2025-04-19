@@ -1,6 +1,6 @@
 import { Customer } from '../types';
 
-const STORAGE_KEY = 'restaurant-customers';
+export const STORAGE_KEY = 'restaurant-customers';
 
 export const saveCustomers = (customers: Customer[]): void => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(customers));

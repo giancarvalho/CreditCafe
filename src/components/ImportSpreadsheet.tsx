@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FileSpreadsheet, Upload, AlertCircle, Check } from 'lucide-react';
 import { importFromSpreadsheet } from '../utils/spreadsheet';
 import { Customer } from '../types';
+import { clearCustomers } from '../utils/storage';
 
 interface ImportSpreadsheetProps {
   onImportSuccess: (customers: Customer[]) => void;
@@ -66,9 +67,10 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
     setSuccessMessage(null);
     
     try {
+      clearCustomers();
       const importedCustomers = await importFromSpreadsheet(file);
       onImportSuccess(importedCustomers);
-      setSuccessMessage(`Successfully imported ${importedCustomers.length} customers.`);
+      setSuccessMessage(`Importamos ${importedCustomers.length} clientes.`);
       setFile(null);
     } catch (err) {
       setError('Erro ao importar a planilha. Verifique se a planilha é valida.');
@@ -80,7 +82,7 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Import Customer Data</h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Importar Clientes</h2>
       
       <div 
         className={`border-2 border-dashed rounded-lg p-8 text-center mb-4 transition-all
@@ -97,7 +99,7 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
         <p className="text-gray-600 mb-4">
           {file 
             ? `Selected file: ${file.name}` 
-            : 'Drag and drop your spreadsheet here, or click to browse'}
+            : 'Arraste seu arquivo para cá ou clique para navegar por seus arquivos'}
         </p>
         
         <input
@@ -114,7 +116,7 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
         >
           <span className="flex items-center">
             <Upload size={16} className="mr-2" />
-            Browse Files
+            Navegar arquivos
           </span>
         </label>
       </div>
@@ -142,11 +144,14 @@ const ImportSpreadsheet: React.FC<ImportSpreadsheetProps> = ({ onImportSuccess }
             : 'bg-amber-700 hover:bg-amber-800 transition-colors'
         }`}
       >
-        {isLoading ? 'Importando...' : 'Importar'}
+        {isLoading ? 'Importando...' : 'Import'}
       </button>
       
       <div className="mt-4 text-sm text-gray-600">
-        <p className="font-medium mb-1">Expected spreadsheet format:</p>
+
+        <p className="font-medium mb-3">ATENÇÃO: seus dados atuais serão substituidos pelos dados da planilha</p>
+
+        <p className="font-medium mb-1">Formato esperado da planilha:</p>
         <ul className="list-disc list-inside space-y-1">
             <li>Colunas: nome, telefone, saldo</li>
             <li>Colunas opcionais: transações (string JSON)</li>

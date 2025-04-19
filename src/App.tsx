@@ -62,7 +62,7 @@ function MainApp() {
 
   // Lidar com sucesso na importação
   const handleImportSuccess = (importedCustomers: Customer[]) => {
-    setCustomers([...customers, ...importedCustomers]);
+    setCustomers([...importedCustomers]);
     toast.success(`Importados ${importedCustomers.length} clientes`);
     setCurrentView('clientes');
   };
@@ -97,11 +97,11 @@ function MainApp() {
 
     // Caso contrário, mostrar a visualização principal com base na navegação
     switch (currentView) {
-      case 'importar':
+      case 'import':
         return <ImportSpreadsheet onImportSuccess={handleImportSuccess} />;
-      case 'exportar':
+      case 'export':
         return <ExportData customers={customers} />;
-      case 'clientes':
+      case 'customers':
       default:
         return (
           <>
