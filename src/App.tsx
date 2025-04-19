@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { CustomerProvider, useCustomers } from './context/CustomerContext';
 import Header from './components/Header';
 import CustomerSearch from './components/CustomerSearch';
@@ -20,28 +21,28 @@ function MainApp() {
     addTransaction
   } = useCustomers();
   
-  const [currentView, setCurrentView] = useState('customers');
+  const [currentView, setCurrentView] = useState('clientes');
   const [filteredCustomers, setFilteredCustomers] = useState<Customer[]>([]);
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [showAddCustomer, setShowAddCustomer] = useState(false);
 
-  // Handle navigation
+  // Lidar com navegação
   const handleNavClick = (view: string) => {
     setCurrentView(view);
     setSelectedCustomer(null);
   };
 
-  // Handle search results
+  // Lidar com resultados de busca
   const handleSearchResults = (results: Customer[]) => {
     setFilteredCustomers(results);
   };
 
-  // Handle customer selection
+  // Lidar com seleção de cliente
   const handleSelectCustomer = (customer: Customer) => {
     setSelectedCustomer(customer);
   };
 
-  // Handle adding a new customer
+  // Lidar com adição de novo cliente
   const handleAddNewCustomer = (name: string, phoneNumber: string) => {
     addCustomer({
       name,
@@ -50,36 +51,36 @@ function MainApp() {
       transactions: []
     });
     setShowAddCustomer(false);
-    toast.success(`Added new customer: ${name}`);
+    toast.success(`Novo cliente adicionado: ${name}`);
   };
 
-  // Handle customer deletion
+  // Lidar com exclusão de cliente
   const handleDeleteCustomer = (id: string) => {
     deleteCustomer(id);
-    toast.success('Customer deleted successfully');
+    toast.success('Cliente excluído com sucesso');
   };
 
-  // Handle import success
+  // Lidar com sucesso na importação
   const handleImportSuccess = (importedCustomers: Customer[]) => {
     setCustomers([...customers, ...importedCustomers]);
-    toast.success(`Imported ${importedCustomers.length} customers`);
-    setCurrentView('customers');
+    toast.success(`Importados ${importedCustomers.length} clientes`);
+    setCurrentView('clientes');
   };
 
-  // Handle transaction addition
+  // Lidar com adição de transação
   const handleAddTransaction = (
     customerId: string, 
     transaction: { amount: number; description: string; type: 'add' | 'subtract' }
   ) => {
     addTransaction(customerId, transaction);
     toast.success(
-      `${transaction.type === 'add' ? 'Added' : 'Subtracted'} credit: $${transaction.amount.toFixed(2)}`
+      `${transaction.type === 'add' ? 'Adicionado' : 'Subtraído'} crédito: R$${transaction.amount.toFixed(2)}`
     );
   };
 
-  // Render different views based on current state
+  // Renderizar diferentes visualizações com base no estado atual
   const renderView = () => {
-    // If a customer is selected, show customer detail view
+    // Se um cliente estiver selecionado, mostrar a visualização de detalhes do cliente
     if (selectedCustomer) {
       return (
         <CustomerDetail
@@ -91,13 +92,13 @@ function MainApp() {
       );
     }
 
-    // Otherwise, show the main view based on navigation
+    // Caso contrário, mostrar a visualização principal com base na navegação
     switch (currentView) {
-      case 'import':
+      case 'importar':
         return <ImportSpreadsheet onImportSuccess={handleImportSuccess} />;
-      case 'export':
+      case 'exportar':
         return <ExportData customers={customers} />;
-      case 'customers':
+      case 'clientes':
       default:
         return (
           <>
@@ -118,7 +119,7 @@ function MainApp() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <p className="text-gray-600">Loading customer data...</p>
+        <p className="text-gray-600">Carregando dados dos clientes...</p>
       </div>
     );
   }
@@ -138,24 +139,17 @@ function MainApp() {
         />
       )}
       
-      <Toaster 
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: '#FFFFFF',
-            color: '#1F2937',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            borderRadius: '0.375rem',
-            padding: '0.75rem 1rem',
-          },
-          success: {
-            iconTheme: {
-              primary: '#B45309',
-              secondary: '#FFFFFF',
-            },
-          },
-        }}
-      />
+<ToastContainer 
+  position="top-right"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
     </div>
   );
 }
