@@ -1,0 +1,15 @@
+{
+  "name": "Credit Cafe",
+  "short_name": "CreditCafe",
+  "description": "Gerencie seu crédito com o Credit Cafe.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "icons": [
+        {
+      "src": "./coffee-144.svg",
+      "sizes": "144x144",
+      "type": "image/svg"
+    }
+  ]
+}

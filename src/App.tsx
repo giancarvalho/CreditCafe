@@ -76,14 +76,14 @@ function MainApp() {
     toast.success(
       `${transaction.type === 'add' ? 'Adicionado' : 'Subtraído'} crédito: R$${transaction.amount.toFixed(2)}`
     );
-    console.log(updatedCustomer);
+
 
     handleSelectCustomer(updatedCustomer);
   };
 
-  // Renderizar diferentes visualizações com base no estado atual
+
   const renderView = () => {
-    // Se um cliente estiver selecionado, mostrar a visualização de detalhes do cliente
+  
     if (selectedCustomer) {
       return (
         <CustomerDetail
@@ -95,7 +95,6 @@ function MainApp() {
       );
     }
 
-    // Caso contrário, mostrar a visualização principal com base na navegação
     switch (currentView) {
       case 'import':
         return <ImportSpreadsheet onImportSuccess={handleImportSuccess} />;
@@ -156,6 +155,21 @@ function MainApp() {
     </div>
   );
 }
+
+async function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js');
+      console.log('Service Worker registered with scope:', registration.scope);
+    } catch (error) {
+      console.error('Service Worker registration failed:', error);
+    }
+  }
+}
+
+window.addEventListener('load', () => {
+  registerServiceWorker()
+})
 
 function App() {
   return (
