@@ -1,6 +1,5 @@
 const basePath = self.location.pathname.replace(/sw\.js$/, '');
 
-const basePath = self.location.pathname.replace(/sw\.js$/, '');
 
 self.addEventListener('install', (event) => {
   console.log('Service Worker installing...');
