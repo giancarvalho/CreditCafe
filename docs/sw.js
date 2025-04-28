@@ -11,7 +11,8 @@ self.addEventListener('install', (event) => {
         `${basePath}index.html`,
         `${basePath}assets/index-DbTjc8lW.css`,
         `${basePath}assets/index-BnpVIo-p.js`,
-        `${basePath}assets/coffee-144.svg`
+        `${basePath}assets/icon-192.png`,
+        `${basePath}assets/icon-512.png`,
       ]);
     })
   );
