@@ -2,14 +2,20 @@
   "name": "Credit Cafe",
   "short_name": "CreditCafe",
   "description": "Gerencie seu crédito com o Credit Cafe.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
+  "theme_color": "#6A4C93",
   "icons": [
-        {
-      "src": "./coffee-144.svg",
-      "sizes": "144x144",
-      "type": "image/svg"
+    {
+      "src": "./assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
